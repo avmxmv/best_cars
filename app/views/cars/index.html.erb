@@ -22,7 +22,7 @@
   <tbody>
     <% @cars.each do |car| %>
       <tr>
-        <td><%= car.name %></td>
+        <td><%= link_to car.name, car_path(car) %></td>
         <td><%= car.price %></td>
         <td><%= car.max_speed %></td>
         <td><%= car.boost %></td>
@@ -42,4 +42,5 @@
 
 <br>
 
-<%= link_to 'New Car', new_car_path %>
+<%= link_to 'New Car', new_car_path, class:"btn btn-primary"%>
+<a class='btn btn-outline-primary' href="/cars/new">New Car</a>
