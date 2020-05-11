@@ -2,45 +2,29 @@
 
 <h1>My Cars</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Max speed</th>
-      <th>Boost</th>
-      <th>Power</th>
-      <th>Powerdensity</th>
-      <th>Size</th>
-      <th>Weight</th>
-      <th>Photo url</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="col px-md-2 mb-3 p-2">
+    <a class='btn btn-outline-primary' href="/cars/new">Добавить автомобиль</a>
+</div>
 
-  <tbody>
-    <% @cars.each do |car| %>
-      <tr>
-        <td><%= link_to car.name, car_path(car) %></td>
-        <td><%= car.price %></td>
-        <td><%= car.max_speed %></td>
-        <td><%= car.boost %></td>
-        <td><%= car.power %></td>
-        <td><%= car.powerdensity %></td>
-        <td><%= car.size %></td>
-        <td><%= car.weight %></td>
-        <td><%= car.photo_url %></td>
-        <td><%= car.content %></td>
-        <td><%= link_to 'Show', car %></td>
-        <td><%= link_to 'Edit', edit_car_path(car) %></td>
-        <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Car', new_car_path, class:"btn btn-primary"%>
-<a class='btn btn-outline-primary' href="/cars/new">New Car</a>
+<div class="container">
+    <div class="row">
+        <% @cars.each do |car| %>
+        <div class="col-sm-6">
+            <div class="card mb-4" style="width: 100%; border-radius: 10px;">
+                <a href=<%= "/cars/#{car.id}"%>>
+                  <img class="img-fluid" style="border-radius: 10px;" src=<%= car.photo_url %>>
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title"><%= car.name %></h5>
+                    <div class="prokrutka mb-2" style="border-radius: 10px;">
+                        <p class="card-text"><%= car.content %></p>
+                    </div>
+                    <%= link_to "Узнать больше", "/cars/#{car.id}", class:"btn btn-outline-info"%>
+                    <%= link_to "Изменить", "/cars/#{car.id}/edit", class:"btn btn-outline-warning"%>
+                    <%= link_to "Удалить", "/cars/#{car.id}", method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger"%>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
