@@ -1,30 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<h1>My Cars</h1>
-
-<div class="col px-md-2 mb-3 p-2">
-    <a class='btn btn-outline-primary' href="/cars/new">Добавить автомобиль</a>
-</div>
-
 <div class="container">
-    <div class="row">
-        <% @cars.each do |car| %>
-        <div class="col-sm-6">
-            <div class="card mb-4" style="width: 100%; border-radius: 10px;">
-                <a href=<%= "/cars/#{car.id}"%>>
-                  <img class="img-fluid" style="border-radius: 10px;" src=<%= car.photo_url %>>
-                </a>
-                <div class="card-body">
-                    <h5 class="card-title"><%= car.name %></h5>
-                    <div class="prokrutka mb-2" style="border-radius: 10px;">
-                        <p class="card-text"><%= car.content %></p>
-                    </div>
-                    <%= link_to "Узнать больше", "/cars/#{car.id}", class:"btn btn-outline-info"%>
-                    <%= link_to "Изменить", "/cars/#{car.id}/edit", class:"btn btn-outline-warning"%>
-                    <%= link_to "Удалить", "/cars/#{car.id}", method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger"%>
-                </div>
-            </div>
-        </div>
-        <% end %>
-    </div>
+<!--  <p id="notice"><%#= notice %></p>-->
+
+  <h1 class="pl-3 pt-2">My Cars</h1>
+
+  <div class="col px-md-2 mb-3 ml-2">
+      <a class='btn btn-secondary' href="/cars/new">Добавить автомобиль</a>
+  </div>
+
+  <div class="container">
+      <div class="row">
+          <% @cars.each do |car| %>
+          <div class="col-sm-6">
+              <div class="card mb-4" style="width: 100%; border-radius: 10px;">
+                  <a href=<%= "/cars/#{car.id}"%>>
+                    <img class="img-fluid" style="border-radius: 10px;" src=<%= car.photo_url %>>
+                  </a>
+                  <div class="card-body">
+                      <h5 class="card-title"><%= car.name %></h5>
+                      <div class="prokrutka mb-2" style="border-radius: 10px;">
+                          <p class="card-text"><%= car.content %></p>
+                      </div>
+                      <%= link_to "Узнать больше", "/cars/#{car.id}", class:"btn btn-outline-info"%>
+                      <%= link_to "Изменить", "/cars/#{car.id}/edit", class:"btn btn-outline-warning"%>
+                      <%= link_to "Удалить", "/cars/#{car.id}", method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger"%>
+                  </div>
+              </div>
+          </div>
+          <% end %>
+      </div>
+  </div>
 </div>
